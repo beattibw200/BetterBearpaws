@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Hello {{name}}!!! </h1>
+
+<form action="combine" method="post">
+
+  {% csrf_token %}
+
+  Enter Name: <input type="text" name= "newName"><br>
+  Enter Username: <input type="text" name="username"<br>
+  Enter Password: <input type="text" name="password"<br>
+  <input type="submit">
+</form>
+
+<h1> {{studentName}} schedule </h1>
+{% endblock %}
