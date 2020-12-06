@@ -30,6 +30,7 @@ line_re = re.compile(r'(\d{5}) (\w{2,4})\s*(\d{3})  (.*?)  (.*?) \s*(\d)(.*M{1})
 ## Create list objects to iterate through later
 course_list = [ ]
 teaches_list = [ ]
+profs_set = set()
 
 # For loop goes through each line of pdf and saves each group into variables.
 for line in io.StringIO(words):
@@ -53,16 +54,27 @@ for line in io.StringIO(words):
 
         # Creates id for course.
         id = department + " " + newCourse.group(3)
+
+        ## Put ID into object as well
+        ID = id
+        
         # Creates course with course id
-        id = Course(CRN,department,section,title,credits,enrolled,max,genEd,prof)
+        id = Course(ID,CRN,department,section,title,credits,enrolled,max,genEd,prof)
 
         ##Add current Course object to course list
         course_list.append(id)
+
+        ##Add professor to prof set (no duplicates) for
+        ##the eventual implementation of prof table
+        profs_set.add(prof)
+        
 
         #print(id.title)
 
 # closing the pdf file object
 pdfFileObj.close()
+
+#print(profs_set)
 
 ## function for completed course list
 def getList():

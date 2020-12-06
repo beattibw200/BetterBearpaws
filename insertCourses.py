@@ -11,7 +11,7 @@ def insert_courses(courses_obj, db):
     #insert each Course as a document (tuple)
     for x in courses_obj:
         course_data = {
-         #   "ID": x.id,
+            "ID": x.ID,
             "crn": x.CRN,
             "title": x.title,
             "sect": x.section,
@@ -23,4 +23,6 @@ def insert_courses(courses_obj, db):
 
         result = collection.insert_one(course_data)
         print('One course: {0}'.format(result.inserted_id))
+
+
 

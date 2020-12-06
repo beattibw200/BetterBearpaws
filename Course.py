@@ -3,7 +3,8 @@
 ## Added prof to construct teaches table with
 
 class Course:
-    def __init__(self, CRN, department, section, title, credits, enrolled, max, genEd, prof):
+    def __init__(self, ID, CRN, department, section, title, credits, enrolled, max, genEd, prof):
+        self.ID = ID
         self.CRN = CRN
         self.department = department
         self.section = section
