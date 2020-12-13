@@ -74,10 +74,13 @@ for line in io.StringIO(words):
 # closing the pdf file object
 pdfFileObj.close()
 
-#print(profs_set)
 
 ## function for completed course list
 def getList():
     return course_list
+
+##getter for prof list
+def getProfs():
+    return profs_set
 
 
