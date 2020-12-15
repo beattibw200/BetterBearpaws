@@ -1,5 +1,4 @@
-# To run, you will need MongoDB and a few modules installed
-# To get the required modules, in the terminal, do 'pip install pymongo' and 'pip install PyPDF2'
+# To run, you will need MongoDB and a few modules installed (all available with pip)
+# You will need to install pymongo, PyPDF2, html5lib, selenium, bs4
 # Once MongoDB is running locally on your machine, run intitializeDatabase.py
-
-# Currently creates BetterBearPaws database in MongoDB and builds Courses, Professors Collections
+# Currently creates BetterBearPaws database in MongoDB and builds Courses, Professors, Student Collections
