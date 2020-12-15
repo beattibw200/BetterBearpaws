@@ -1,5 +1,5 @@
 from selenium import webdriver
-import pyvirtualdisplay
+#import pyvirtualdisplay
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 import time
@@ -23,8 +23,8 @@ form.submit()
 time.sleep(5)
 
 ##change these for login
-user = 'beattibw200@potsdam.edu'
-passw = 'Ponponponka3'
+user = raw_input("Enter Potsdam ID ('example201': ") + "@potsdam.edu"
+passw = raw_input("Enter password: ")
 
 form = driver.find_element_by_id('loginForm')
 username = driver.find_element_by_name("UserName")
