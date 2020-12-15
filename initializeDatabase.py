@@ -14,10 +14,20 @@ db = client['BetterBearPaws']
 
 #Executes scraper.py to get course_list
 print("Running scraper.py...")
-execfile('scraper.py')
+exec(open("scraper.py").read())
+
+#Executes webscraper.py to get Student info
+print("Running webscrape.py...")
+print("(This one could take a while)")
+import webscrape
+
+print("Done scraping!")
 
 #Get the list to send to insertCourses
 course_list = scraper.getList()
+
+#Get the list to send to insertStudents
+stu_list = webscrape.getStudents()
 
 #Run insert_courses from inserts to insert the courses
 #into the MongoDB
@@ -35,3 +45,9 @@ print("Running inserts.insert_teaches...")
 inserts.insert_teaches(course_list, db)
 
 print("Done!")
+
+print("Running inserts.insert_students...")
+inserts.insert_students(stu_list, db)
+
+print("Done!")
+

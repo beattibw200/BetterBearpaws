@@ -43,3 +43,16 @@ def insert_teaches(courses_obj, db):
            {"Name": x.prof},
            {"$addToSet": { "teaches": x.ID}}, upsert = True
        )
+
+def insert_students(stu_list, db):
+    collection = db['Students']
+
+    for x in stu_list:
+        stu_data = {
+            "PNum": x.pnum,
+            "Name": x.name,
+            "Needed": x.need,
+            "Taken": x.takes
+            }
+        result = collection.insert_one(stu_data)
+        print('One Student: {0}'.format(result.inserted_id))
