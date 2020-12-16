@@ -82,6 +82,7 @@ def getList():
 
 ##getter for prof list
 def getProfs():
-    return profs_set
+    x = list(profs_set)
+    return x
 
 

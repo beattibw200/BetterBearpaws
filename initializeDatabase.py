@@ -5,49 +5,50 @@
 # Then it uses insert_courses(list, dict) to fill the Courses collection (table)
 import scraper
 import inserts
+import sqlite3
 
-from pymongo import MongoClient
 
 #Initializes database
-client = MongoClient()
-db = client['BetterBearPaws']
+conn = sqlite3.connect('BetterBearPaws.db')
+c = conn.cursor()
+
+c.execute('''CREATE TABLE Courses (ID text, CRN text, title text, sect text, dept text, credits int, capacity int, enrolled int) ''')
+c.execute('''CREATE TABLE Professors (Name text)''')
+c.execute('''CREATE TABLE teaches (ProfName text, CRN int)''')
+c.execute('''CREATE TABLE Students (PNum text, Name text)''')
+c.execute('''CREATE TABLE has_taken (PNum text, ID text)''')
+c.execute('''CREATE TABLE needs (PNum text, ID text)''')
+
 
 #Executes scraper.py to get course_list
 print("Running scraper.py...")
 exec(open("scraper.py").read())
 
-#Executes webscraper.py to get Student info
-print("Running webscrape.py...")
-print("(This one could take a while)")
-import webscrape
-
-print("Done scraping!")
-
 #Get the list to send to insertCourses
 course_list = scraper.getList()
 
-#Get the list to send to insertStudents
-stu_list = webscrape.getStudents()
-
 #Run insert_courses from inserts to insert the courses
-#into the MongoDB
 print("Running inserts.insert_courses...")
-inserts.insert_courses(course_list, db)
+inserts.insert_courses(course_list, c)
 
 print("Done!")
 
 print("Running inserts.insert_profs...")
-inserts.insert_profs(scraper.getProfs(), db)
+inserts.insert_profs(scraper.getProfs(), c)
 
 print("Done!")
 
 print("Running inserts.insert_teaches...")
-inserts.insert_teaches(course_list, db)
+inserts.insert_teaches(course_list, c)
 
 print("Done!")
 
-print("Running inserts.insert_students...")
-inserts.insert_students(stu_list, db)
+inserts.insert_students(c)
+
 
 print("Done!")
+
+conn.commit()
+
+conn.close()
 
