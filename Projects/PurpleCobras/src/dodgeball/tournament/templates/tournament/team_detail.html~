@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Team: {{ team.name }}</h1>
+
+  <p><strong>Coach:</strong> {{ team.coach }}</p>
+<p><strong>Mascot:</strong> {{ team.mascot }}</p>
+<p><strong>Matches involved:</strong> {{ team.matchnums }}</p>
+
+{% endblock %}

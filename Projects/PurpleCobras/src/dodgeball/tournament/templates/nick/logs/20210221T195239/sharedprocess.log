@@ -1,0 +1,2 @@
+[2021-02-21 19:52:44.083] [sharedprocess] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/home/nick/softeng/tournamentapp/src/dodgeball/tournament/templates/nick/User/snippets'
+[2021-02-21 19:53:24.077] [sharedprocess] [info] Starting to clean up unused language packs.

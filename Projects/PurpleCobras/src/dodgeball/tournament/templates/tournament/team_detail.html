@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 class="teamtitle">{{ team.name }}</h1>
+
+<p align="center"><strong>Coach:</strong> {{ team.coach }}</p>
+<p align="center"><strong>Mascot:</strong> {{ team.mascot }}</p>
+
+{% if team.matches %}
+<table class="boxed" align="center" cellpadding="10"cellspacing="10">
+  <caption align="center"><strong>Match History</strong></caption>
+  <tr>
+    <th>Tournament</th>
+    <th>Round</th>
+    <th>Victor</th>
+    <th>Eliminations</th>
+    <th></th>
+  </tr>
+  {% for match in team.matches %}
+  <tr href"{{ match.get_absolute_url }}">
+    <td>{{ match.tournament }}</td>
+    <td>{{ match.round_index }}</td>
+    <td>{{ match.winning_team }}</td>
+    <td>{{ match.team_1 }}: {{ match.score_1 }}</td>
+    <td>{{ match.team_2 }}: {{ match.score_2 }}</td>
+    
+  </tr>
+  {% endfor %}
+</table>
+
+{% else %}
+<p>There are no matches for this team.</p>
+{% endif %}
+
+{% endblock %}
+

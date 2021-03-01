@@ -1,0 +1,1 @@
+[2021-02-22 12:45:06.636] [renderer1] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/home/nick/softeng/tournamentapp/.vscode'

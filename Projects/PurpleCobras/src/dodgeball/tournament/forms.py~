@@ -1,0 +1,50 @@
+from django import forms
+from django.contrib.auth.models import User
+
+class SignupForm(forms.Form):
+    username = forms.CharField(label='Username', max_length=60)
+    password = forms.CharField(widget=forms.PasswordInput)
+    choices =(
+        ('Fan','Just a fan'),
+        ('Participant','Participant (Coach or player)'),
+        ('Manager','Tournament Manager'),
+    )
+    role = forms.ChoiceField(choices=choices)
+
+    class Meta:
+        model = User
+        fields = ["username", "password", "role"]
+
+from .models import Team, Tournament
+class AddTeamForm(forms.Form):
+    team_name = forms.CharField(label= "Team Name", max_length =100)
+    team_coach = forms.CharField(label = "Coach", max_length =100)
+    team_mascot = forms.CharField(label= "Mascot", max_length =100)
+
+    class Meta:
+        model = Team
+        fields = ["name", "coach", "mascot"]
+
+from .models import ParticipatesIn
+class AddParticipatesIn(forms.Form):
+
+    #Create a choice tuple list of (Team object, Team.name)
+    teams = []
+    for x in Team.objects.all():
+        teams.append((x, x.name))
+            
+    #Create a choice tupled list of (Tournament object, Tournament.title)
+    tournaments = []
+    for x in Tournament.objects.all():
+        tournaments.append((x, x.title))
+
+    
+    #Create form choices using above lists
+    team = forms.ChoiceField(choices=teams)
+    tournament = forms.ChoiceField(choices=tournaments)
+    
+
+    class Meta:
+        model = ParticipatesIn
+        fields = ["team", "tournament"]
+        

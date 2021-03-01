@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 style="text-align:center">Tournaments</h1>
+  {% if tournament_list %}
+  <h2>Current Tournaments</h2>
+  <ul>
+    {% for tournament in tournament_list %}
+      {% if tournament.completed == False%}
+        <li>
+          <a class="button" href="{{ tournament.get_absolute_url }}">{{ tournament.title }} ({{tournament.date_of}} - TBD)</a>
+        </li>
+      {%endif%}
+    {% endfor %}
+  </ul>
+  <h2>Previous Tournaments</h2>
+  <ul>
+    {% for tournament in tournament_list %}
+      {% if tournament.completed == True%}
+        <li>
+          <a class="button" href="{{ tournament.get_absolute_url }}">{{ tournament.title }} ({{tournament.date_of}} - {{tournament.completed}})</a>)
+        </li>
+      {%endif%}
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no teams.</p>
+    {% endif %}
+
+    
+    <a class="cutelink" href="{% url 'addparticipatesin' %}"> Register your existing team to an ongoing tournament here.</a>
+{% endblock %}

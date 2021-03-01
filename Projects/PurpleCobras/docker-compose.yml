@@ -1,0 +1,38 @@
+version: "3.3"
+
+# container networks to set up
+networks:
+  django_db_net:
+    external: false
+
+# the containers to spin up
+services:
+  django:
+    build: ./docker/django
+    restart: 'unless-stopped'
+    depends_on:
+      - db
+    networks:
+      - django_db_net
+    user: "${HOST_USER_ID}:${HOST_GROUP_ID}"
+    volumes:
+      - ./src:/src
+    working_dir: /src/dodgeball
+    command: ["/src/wait-for-it.sh", "db:3306", "--", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+#    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "${DJANGO_PORT}:8000"
+
+  db:
+    image: mariadb:latest
+    user: "${HOST_USER_ID}:${HOST_GROUP_ID}"
+    volumes:
+      - ./data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=this_is_a_bad_password
+      - MYSQL_USER=django
+      - MYSQL_PASSWORD=django
+      - MYSQL_DATABASE=dodgeball
+    networks:
+      - django_db_net

@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 align="center">Dodgeball Pro Home</h1>
+ {% if tournaments_list %}
+  <h2>Ongoing Tournament(s)</h2>
+  <ul>
+    {% for tournament in tournaments_list %}
+      {% if tournament.completed == False%}
+          <a class="button" href="{{ tournament.get_absolute_url }}">{{ tournament.title }}</a>
+      {%endif%}
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no ongoing tournaments.</p>
+    {% endif %}
+    <div class="banner">
+         <img alt="Pic1" src="https://img.women.com/images/images/000/186/652/large/dodgeball-quotes-header-090619.jpg?1567790655"
+              width="400" height="300">
+	 <img alt="Pic2" src="https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/42/2012/11/Dodgeball-free42.jpg"
+               width="400" height="300">
+	 <img alt="Pic3" src="https://images.immediate.co.uk/production/volatile/sites/3/2017/06/140585.668bd390-7694-481a-a8c2-38aba6f6eedc.jpg?quality=90&resize=620,413"
+		width="400" height="300">
+    </div>
+	  <img alt="tshirt ad" src="http://thendl.com/images/dodgeball_188x145_trans.png">
+
+{% endblock %}

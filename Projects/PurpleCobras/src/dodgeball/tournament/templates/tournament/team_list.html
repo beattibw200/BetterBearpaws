@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 style="text-align:center">Teams</h1>
+<li>
+  <a class="cutelink" href="{% url 'create_team' %}"> Add A Team </a>
+</li>
+  {% if team_list %}
+  <ul>
+    {% for team in team_list %}
+      <p>
+        <a class="button" href={% url 'team_detail' team.pk %}>{{ team.name }} </a>
+      </p>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no teams.</p>
+  {% endif %} 
+{% endblock %}

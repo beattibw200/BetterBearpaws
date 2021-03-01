@@ -1,0 +1,65 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Corben', Georgia, Times, serif;
+}
+p, div, li {
+    font-family: 'Nobile', Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #C0C0C0;
+}
+
+.cutelink {
+    color: black;
+}
+
+.button {
+    background-color: #C0C0C0;
+    border: solid;
+    border-color: black;
+  color: black;
+  padding: 15px 32px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  list-style: none;
+}
+
+.genericbutton {
+    background-color:  #7d3899;
+    border: solid;
+    border-color: black;
+  color: black;
+  padding: 10px 25px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  list-style: none;
+}
+
+.teamtitle {
+    color: indigo;
+    font-size: 30px;
+    text-align: center;
+}
+
+.boxed {
+    border: 1px solid black;
+}
+
+caption {
+    font-family: 'Corben', Georgia, Times, serif;
+    font-size: 22px;
+}
+
+img  {
+  float: right;
+}

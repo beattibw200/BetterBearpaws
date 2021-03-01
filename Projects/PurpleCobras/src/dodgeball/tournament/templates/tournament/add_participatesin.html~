@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 style="text-align:center">Register A Team</h1>
+<form method="POST" class="form-group">
+  {%csrf_token%}
+  {{ form.as_p}}
+  <button type="submit" class="btn btn-success" >Register</button>
+</form>
+  {% endblock %}

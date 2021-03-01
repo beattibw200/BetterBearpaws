@@ -1,0 +1,1 @@
+[2021-02-21 19:52:43.133] [renderer1] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/home/nick/softeng/tournamentapp/src/dodgeball/tournament/templates/.vscode'
